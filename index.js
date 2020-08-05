@@ -122,7 +122,7 @@ app.put('/api/persons/:id', function (req, res) {
 
     const existingPerson = persons.find(p => p.name === body.name)    
     if (!existingPerson) {
-        return res.status(400).json({
+        return res.status(404).json({
             error: `the person '${body.name}' was already deleted from server`
         })
     }
