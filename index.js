@@ -110,6 +110,27 @@ app.post('/api/persons', (req,res) => {
     res.json(person)    
 })
 
+app.put('/api/persons/:id', function (req, res) {
+    const id = Number(req.params.id)
+    const body = req.body
+
+    if (!body.name || !body.number) {
+        return res.status(400).json({
+            error: 'name and number are mandatory'
+        })
+    }
+
+    const person = {
+        name: body.name,
+        number: body.number,
+        id: id
+    }
+
+    persons = persons.map(p => p.id !== id ? p : person)
+
+    res.json(person)    
+})
+
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
