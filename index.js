@@ -117,5 +117,5 @@ app.use(unknownEndpoint)
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
-  console.log(`Phonebook backend app listening at http://localhost:${port}`)
+  console.log(`Phonebook backend app listening at http://localhost:${PORT}`)
 })
