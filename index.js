@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
 
 let persons = [
     {
@@ -40,6 +41,8 @@ let persons = [
 ]
 
 const app = express()
+
+app.use(cors())
 app.use(express.json())
 
 morgan.token('json_body', (req) => JSON.stringify(req.body))
@@ -112,8 +115,7 @@ const unknownEndpoint = (request, response) => {
 
 app.use(unknownEndpoint)
 
-const port = 3001
-
+const PORT = process.env.PORT || 3001
 app.listen(port, () => {
   console.log(`Phonebook backend app listening at http://localhost:${port}`)
 })
